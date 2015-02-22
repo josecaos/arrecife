@@ -1,0 +1,44 @@
+/**/
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+h6 {
+	height: 100%;
+	padding-top: 7px;
+	padding-left: 4px;
+}
+.contPrincipal {
+	background: lightgray;
+	height: 100%;
+	width: 100%;
+}
+.header {
+	background: rgba(100,200,100,0.3);
+	float: left;	
+	height: 27px;
+	position: unset;
+	width: 100%;
+}
+.headText {
+	color: #e91436;
+	font-size: 1.2em;
+	padding: 2px 5px;
+	width: auto;
+}
+.contLienzo {
+	border: 1px dashed gray;
+	background: cyan;
+	margin-left: 15%;
+	height: auto;
+	width: 75%;
+}
+footer {
+	background: rgba(100,200,100,0.3);
+	height: 27px;
+	position: relative;
+	width: 100%;
+}
