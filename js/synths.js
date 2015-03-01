@@ -21,6 +21,7 @@ function sinte() {
 //
 $(function() {
   arrecife.play();
+  //sinte();
 });
 /*
 //crea el sinte
