@@ -1,17 +1,27 @@
 ////written by @joseCao5
-//SinOsc
-var sin = flock.synth({
+//
+var arrecife = flock.init();// enviroment //inicia toda la sesion de sintesis
+//funciones
+function on() {
+      arrecife.play();
+    };
+function off() {
+      arrecife.stop();
+    };
+//oscilador
+function sinte() {
+ return flock.synth({
     synthDef: {
-        ugen: "flock.ugen.sinOsc",
-        freq: 220,
-        mul: 0.25
+       id: "nodo",
+       ugen: "flock.ugen.sin",
+       freq: 120
     }
-});
-var seno = flock.synth(sin);
+ });
+};
 //
 $(function() {
-
-})
+  arrecife.play();
+});
 /*
 //crea el sinte
 //

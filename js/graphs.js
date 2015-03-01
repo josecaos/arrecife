@@ -1,10 +1,10 @@
 //written by @joseCao5
 var lienzo = document.getElementById("lienzo");
 var context = lienzo.getContext("2d");
-var a,x=50,y=50,xx=2,yy=1;//,i = 1;
+var a,x=50,y=50,mx=2,my=1;//,i = 1;
 var canvas = $(".contlienzo");
-var alto = lienzo.height-10;
-var ancho = lienzo.width-10;
+var alto = lienzo.height-5;
+var ancho = lienzo.width-5;
 //detecta cambio de tamano
 $.fn.addOnResizeEvent = function(custom_options) {
 	var options = {
@@ -27,40 +27,44 @@ $.fn.addOnResizeEvent = function(custom_options) {
 				lw = w;
 				lh = h;
 				target.trigger( "resize" );
-			} 
+			}
 		}, options.timeInterval );
 	} );
 };
+//
 //funciones
-function nodo() {
+function nodo() { // circulo
 	if( x >= ancho || x <= 0 )
-  	 	xx = xx*-1;
+  	 	mx = mx*-1;
 	if( y >= alto || y <= 0 )
-   		yy = yy*-1;
-	x = x+xx;
-	y = y+yy;
+   		my = my*-1;
+	x = x+mx;
+	y = y+my;
 	context.beginPath();
 	context.clearRect(0,0,700,500);
-	context.fillStyle="lime";
-	context.arc(x,y, 5, 0,2*Math.PI,false);
+	context.fillStyle="black";
+	context.arc(x,y, 8, 0,2*Math.PI,false);//circulo
 	context.fill();
-	context.font = "0.5em Arial";
-	context.strokeText("An oscillator",x,y);
-	//			
-	setTimeout("nodo()",30);
+    //texto de la esfera
+	//context.font = "0.3em Arial";
+	//context.strokeText("un oscilador",x,y);
+	//
+	setTimeout("nodo()",30); //practicamente se manda a llamar cada 30ms !
 }
 //
 canvas.resize( function() {
-// cuando cambie el tamano del doc
+alert('estoy cambiando de tamano :) p.d. extrno a mi pandita');
 });
+/*
 //pinta
 $('#lienzo').mousedown(function(e){
   var mouseX = e.pageX - this.offsetLeft;
-  var mouseY = e.pageY - this.offsetTop;	
+  var mouseY = e.pageY - this.offsetTop;
   paint = true;
   addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
   redraw();
 });
+*/
 //doc ready:
 function inicio(){
 	nodo();
