@@ -40,19 +40,9 @@ function nodo(posx,posy) { // circulo
 canvas.resize( function() {
 alert('estoy cambiando de tamano :) p.d. extrano a mi pandita');
 });
-/*
-//pinta
-$('#lienzo').mousedown(function(e){
-  var mouseX = e.pageX - this.offsetLeft;
-  var mouseY = e.pageY - this.offsetTop;
-  paint = true;
-  addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-  redraw();
-});
-*/
 //doc ready:
-function inicio(){
-    nodo();
+function inicio(x,y){
+    nodo(x,y);
 	}
 canvas.addOnResizeEvent();//agrega a deteccion de cambio de tamano
 //ready
@@ -66,7 +56,7 @@ $(function() {
     var a = Math.floor(Math.random() * 259);
     var b = Math.floor(Math.random() * 129);
     var c = Math.floor(Math.random() * 340);    
-	inicio(d,e);
+	inicio(c,e);
     //drawAsteroids();
 });
 //
