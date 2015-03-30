@@ -16,7 +16,7 @@ $.fn.addOnResizeEvent = function(custom_options) {
 //
 //funciones
 
-function nodo() { // circulo
+function nodo(posx,posy) { // circulo
 	if( x >= ancho || x <= 0 )
   	 	mx = mx*-1;
 	if( y >= alto || y <= 0 )
@@ -25,9 +25,9 @@ function nodo() { // circulo
 	y = y+my;
     for (i = 0; i <= 8; i++) {
 	context.beginPath();
-	context.clearRect(0,0,700,500);
+	context.clearRect(0,0,posx,posy);
 	context.fillStyle="black";
-	context.arc(x+10,y-10, 20, 0,2*Math.PI,false);//circulo
+	context.arc(x+10,y-10, 10, 0,2*Math.PI,false);//circulo
 	context.fill();
     //texto de la esfera
 	//context.font = "0.3em Arial";
@@ -38,7 +38,7 @@ function nodo() { // circulo
 	//setInterval("nodo()",30); //se manda a llamar cada 30ms
 //
 canvas.resize( function() {
-alert('estoy cambiando de tamano :) p.d. extrno a mi pandita');
+alert('estoy cambiando de tamano :) p.d. extrano a mi pandita');
 });
 /*
 //pinta
@@ -66,7 +66,7 @@ $(function() {
     var a = Math.floor(Math.random() * 259);
     var b = Math.floor(Math.random() * 129);
     var c = Math.floor(Math.random() * 340);    
-	inicio();
+	inicio(d,e);
     //drawAsteroids();
 });
 //
