@@ -26,7 +26,6 @@ $.fn.addOnResizeEvent = function(custom_options) {
 };
 //
 //funciones
-
 function nodo(t,c) { // circulo
 	if( x >= ancho || x <= 0 )
   	 	mx = mx*-1;
@@ -45,13 +44,74 @@ function nodo(t,c) { // circulo
 	//context.strokeText("un oscilador",x,y)
     }
 }
+//copo de Koch
+function fractalRecta(xa,ya,xb,yb){
+    var largo = Math.sqrt(Math.pow(xb-xa,2) + Math.pow(yb-ya,2));
+    if (largo > 1){
+        //Dividimos la recta en 3 partes
+        var sx = (xb-xa)/3;
+        var sy = (yb-ya)/3;
+        //Buscamos los puntos de las 4 rectas
+        var x1 = xa;
+        var y1 = ya;
+        var x2 = xa + sx;
+        var y2 = ya + sy;
+        var vx = (Math.sqrt(3)/6)*(xb-xa);
+        var vy = (Math.sqrt(3)/6)*(yb-ya);
+        var x3 = x1 + ((xb-xa)/2) - vy;
+        var y3 = y1 + ((yb-ya)/2) + vx;
+        var x4 = xb - sx;
+        var y4 = yb - sy; 
+        var x5 = xb;
+        var y5 = yb;
+        //Borramos recta anterior
+        cwxe.beginPath();
+        cwxe.moveTo(xa,-ya+he);
+        cwxe.lineTo(xb,-yb+he);
+        cwxe.stroke();
+        cwxe.closePath();
+        //Pintamos las 4 nuevas rectas
+        cwxe.beginPath();
+        cwxe.moveTo(x1,-y1+he);
+        cwxe.lineTo(x2,-y2+he);
+        cwxe.lineTo(x3,-y3+he);
+        cwxe.lineTo(x4,-y4+he);
+        cwxe.lineTo(x5,-y5+he);
+        cwxe.fill();
+        cwxe.closePath();
+        //Nueva llamada recursiva a cada segmento
+        fractalRecta(x1,y1,x2,y2);
+        fractalRecta(x2,y2,x3,y3);
+        fractalRecta(x3,y3,x4,y4);
+        fractalRecta(x4,y4,x5,y5);
+    }
+}
+    //fractal
+    //Calculamos los puntos de un triángulo inicial
+    var p1x = we/2-lado/2;
+    var p1y = he/2-altura/3;
+    var p2x = p1x+lado;
+    var p2y = p1y;
+    var p3x = p1x+lado/2;
+    var p3y = p1y+altura;
+    //Lo pintamos
+    cwxe.beginPath();
+    cwxe.moveTo(p1x,-p1y+he);
+    cwxe.lineTo(p2x,-p2y+he);
+    cwxe.lineTo(p3x,-p3y+he);
+    cwxe.lineTo(p1x,-p1y+he);
+    cwxe.fill();
+    cwxe.closePath();
 //
 canvas.resize( function() {
 alert('estoy cambiando de tamano :) p.d. extrano a mi pandita');
 });
-
 //ready
 $(function() {
+    //Llamamos al fractal 
+    fractalRecta(p1x,p1y,p3x,p3y);
+    fractalRecta(p3x,p3y,p2x,p2y);
+    fractalRecta(p2x,p2y,p1x,p1y);
     //movimiento oscilador
     //loop
 	setInterval(function() {
