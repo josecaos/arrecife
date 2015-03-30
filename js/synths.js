@@ -9,19 +9,20 @@ function off() {
       arrecife.stop();
     };
 //oscilador
-function sinte() {
+function sinte(freq) {
  return flock.synth({
     synthDef: {
        id: "nodo",
        ugen: "flock.ugen.sin",
-       freq: 120
+       freq: freq
     }
  });
 };
 //
+var osc1;
 $(function() {
   arrecife.play();
-  //sinte();
+  osc1 = sinte(42);
 });
 /*
 //crea el sinte
